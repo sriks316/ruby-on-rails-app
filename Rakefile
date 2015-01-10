@@ -3,4 +3,12 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+
+if ENV['GENERATE_REPORTS'] == 'true'
+  require 'ci/reporter/rake/rspec'
+  task :rspec => 'ci:setup:rspec'
+end
+
 SampleApp::Application.load_tasks
+
+
